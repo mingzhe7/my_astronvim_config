@@ -1,0 +1,29 @@
+return {
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy", -- 延迟加载插件
+    dependencies = {
+      "MunifTanjim/nui.nvim", -- Noice 的必需依赖
+      "rcarriga/nvim-notify", -- 用于通知界面
+    },
+    config = function()
+      require("noice").setup({
+        -- 插件的核心配置
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        presets = {
+          bottom_search = true, -- 将搜索框放在屏幕底部
+          command_palette = true, -- 启用命令面板样式
+          long_message_to_split = true, -- 将长消息显示为拆分窗口
+          inc_rename = false, -- 禁用内置的 `:IncRename` 命令
+        },
+      })
+    end,
+  },
+}
+
